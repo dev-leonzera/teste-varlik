@@ -12,10 +12,6 @@
     <div class="page-body">
         <div class="container-xl">
 
-            <div class="alert alert-info">
-                <div class="alert-title">Sample table page</div>
-            </div>
-
             <div class="card">
                 <div class="table-responsive">
                     <table class="table" id="dataTable" width="100%" cellspacing="0">
