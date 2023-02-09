@@ -16,9 +16,12 @@ return new class extends Migration
         Schema::create('eventos', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('slug');
             $table->string('description');
             $table->date('data_evento');
             $table->string('local');
+            $table->integer('capacidade');
+            $table->string('banner');
             $table->timestamps();
         });
     }

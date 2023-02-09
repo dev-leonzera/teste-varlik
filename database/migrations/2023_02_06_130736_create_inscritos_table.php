@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('inscritos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('evento_id')->constrained('eventos');
+            $table->foreignId('evento_id')->constrained('eventos')->onDelete('cascade');
             $table->string('nome');
             $table->integer('idade');
             $table->string('email');

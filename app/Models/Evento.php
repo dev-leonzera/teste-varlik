@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Evento extends Model
 {
-    protected $fillable = ['title', 'description', 'data_evento', 'local'];
+    protected $fillable = ['title', 'description', 'data_evento', 'local', 'capacidade', 'banner', 'slug'];
+
+    public function inscrito(){
+        return $this->hasMany(Inscrito::class);
+    }
 }

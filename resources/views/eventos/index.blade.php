@@ -103,7 +103,7 @@
                     <h5 class="modal-title">{{ __('Novo Evento') }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form class="card card-md" action="{{ url('eventos') }}" method="post" autocomplete="off">
+                <form class="card card-md" action="{{ url('eventos') }}" method="post" autocomplete="off" enctype="multipart/form-data">
                     @csrf
 
                     <div class="card-body">
@@ -127,7 +127,14 @@
                             <label class="form-label">Data do Evento</label>
                             <input type="date" name="data_evento" class="form-control">
                         </div>
-
+                        <div class="mb-3">
+                            <label class="form-label">Capacidade Máxima</label>
+                            <input type="number" name="capacidade" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Banner</label>
+                            <input type="file" name="image" class="form-control">
+                        </div>
                         <div class="col-lg-12">
                             <div>
                                 <label class="form-label">Descrição do Evento</label>

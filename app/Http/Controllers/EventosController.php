@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Evento;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class EventosController extends Controller
 {
@@ -21,7 +22,17 @@ class EventosController extends Controller
 
     public function store(Request $request)
     {
-        $evento = Evento::create($request->input());
+        $evento = new Evento();
+        $evento->title = $request->input('title');
+        $evento->local = $request->input('local');
+        $evento->data_evento = $request->input('data_evento');
+        $evento->description = $request->input('description');
+        $evento->capacidade = $request->input('capacidade');
+        $evento->slug = Str::slug($request->input('title'));
+        $evento->banner = 'banner'.'_'.$evento->slug.'.'.$request->file('image')->extension();
+        $request->file('image')->move(public_path('/img'), $evento->banner);
+        $evento->save();
+
         return redirect()->route('eventos.index')
             ->with('success', 'Evento criado com sucesso!');
     }
@@ -30,8 +41,8 @@ class EventosController extends Controller
     public function show($id)
     {
         $evento = Evento::findOrFail($id);
-
-        return view('eventos.show', compact('evento'));
+        $inscritos = $evento->inscrito()->orderBy('nome')->get();
+        return view('eventos.show')->with('evento', $evento)->with('inscritos', $inscritos);
     }
 
     /**

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventosController;
+use App\Http\Controllers\InscritoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,10 @@ use App\Http\Controllers\EventosController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/evento/{slug}', [InscritoController::class, 'pageEvento'])->name('evento.page');
+Route::get('/evento/{slug}/inscricao', [InscritoController::class, 'pageForm']);
+Route::post('/evento/form', [InscritoController::class, 'formInscricao']);
 
 Auth::routes();
 
