@@ -28,7 +28,19 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">Data do Evento</label>
-                <input type="date" name="data_evento" class="form-control" value="{{ $evento->data_evento }}">
+                <input type="date" name="data_inicio" class="form-control" value="{{ $evento->data_inicio }}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Data do Encerramento</label>
+                <input type="date" name="data_fim" class="form-control" value="{{ $evento->data_fim }}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Capacidade Máxima</label>
+                <input type="number" name="capacidade" class="form-control" value="{{ $evento->capacidade }}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Banner</label>
+                <input type="file" name="image" class="form-control">
             </div>
 
             <div class="col-lg-12">

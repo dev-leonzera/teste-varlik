@@ -43,7 +43,8 @@
                         <thead>
                             <tr>
                                 <th>{{ __('Nome do evento') }}</th>
-                                <th>{{ __('Data') }}</th>
+                                <th>{{ __('Data de Início') }}</th>
+                                <th>{{ __('Data de Encerramento') }}</th>
                                 <th>{{ __('Local') }}</th>
                                 <th>{{ __('') }}</th>
                             </tr>
@@ -52,7 +53,8 @@
                             @foreach ($eventos as $evento)
                                 <tr>
                                     <td>{{ $evento->title }}</td>
-                                    <td>{{ \date('d/m/Y', strtotime($evento->data_evento)) }}</td>
+                                    <td>{{ \date('d/m/Y', strtotime($evento->data_inicio)) }}</td>
+                                    <td>{{ \date('d/m/Y', strtotime($evento->data_fim)) }}</td>
                                     <td>{{ $evento->local }}</td>
                                     <td>
                                         <span class="dropdown">
@@ -69,9 +71,6 @@
                                                     Remover
                                                 </button>
                                             </form>
-                                            {{-- <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown" aria-expanded="false">Actions</button>
-                                          <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown" aria-expanded="false">Actions</button>
-                                          <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown" aria-expanded="false">Actions</button> --}}
                                             <div class="dropdown-menu dropdown-menu-end" style="">
                                                 <a class="dropdown-item" href="#">
                                                     Visualizar Evento
@@ -96,6 +95,7 @@
             </div>
         </div>
     </div>
+    <!-- Modal Form Cadastro de Eventos -->
     <div class="modal modal-blur fade" id="modal-create" tabindex="-1" style="display: none;" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -110,7 +110,7 @@
                         <div class="mb-3">
                             <label class="form-label">{{ __('Nome do Evento') }}</label>
                             <input type="text" name="title" class="form-control @error('title') is-invalid @enderror"
-                                placeholder="{{ __('Nome do Evento') }}">
+                                placeholder="{{ __('Nome do Evento') }}" required>
                             @error('title')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -118,31 +118,36 @@
                         <div class="mb-3">
                             <label class="form-label">{{ __('Local do Evento') }}</label>
                             <input type="text" name="local" class="form-control @error('local') is-invalid @enderror"
-                                placeholder="{{ __('Local do Evento') }}">
+                                placeholder="{{ __('Local do Evento') }}" required>
                             @error('local')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Data do Evento</label>
-                            <input type="date" name="data_evento" class="form-control">
+                            <label class="form-label">Início</label>
+                            {{-- <input type="datetime-local" name="data_inicio" class="form-control"> --}}
+                            <input name="data_inicio" type="date" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Fim</label>
+                            <input name="data_fim" type="date" class="form-control">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Capacidade Máxima</label>
-                            <input type="number" name="capacidade" class="form-control">
+                            <input type="number" name="capacidade" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Banner</label>
-                            <input type="file" name="image" class="form-control">
+                            <input type="file" name="image" class="form-control" required>
                         </div>
                         <div class="col-lg-12">
                             <div>
                                 <label class="form-label">Descrição do Evento</label>
-                                <textarea class="form-control" name="description" rows="3"></textarea>
+                                <textarea class="form-control" name="description" rows="5" required></textarea>
                             </div>
                         </div>
-                        <div class="form-footer">
-                            <button type="submit" class="btn btn-primary w-100">{{ __('Salvar') }}</button>
+                        <div class="form-footer d-flex">
+                            <button type="submit" class="btn btn-primary">{{ __('Salvar') }}</button>
                         </div>
                     </div>
                 </form>

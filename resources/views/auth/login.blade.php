@@ -8,7 +8,7 @@
             <h2 class="card-title text-center mb-4">{{ __('Login to your account') }}</h2>
 
             <div class="mb-3">
-                <label class="form-label">{{ __('Email address') }}</label>
+                <label class="form-label">{{ __('Email') }}</label>
                 <input type="email" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" placeholder="{{ __('Enter email') }}" required autofocus tabindex="1">
                 @error('email')
                 <div class="invalid-feedback">{{ $message }}</div>

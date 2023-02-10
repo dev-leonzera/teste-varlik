@@ -25,7 +25,8 @@ class EventosController extends Controller
         $evento = new Evento();
         $evento->title = $request->input('title');
         $evento->local = $request->input('local');
-        $evento->data_evento = $request->input('data_evento');
+        $evento->data_inicio = $request->input('data_inicio');
+        $evento->data_fim = $request->input('data_fim');
         $evento->description = $request->input('description');
         $evento->capacidade = $request->input('capacidade');
         $evento->slug = Str::slug($request->input('title'));
@@ -67,9 +68,20 @@ class EventosController extends Controller
     public function update(Request $request, $id)
     {
         $evento = Evento::findOrFail($id);
-        $data = $request->input();
 
-        $evento->update($data);
+        $evento->title = $request->input('title');
+        $evento->local = $request->input('local');
+        $evento->data_inicio = $request->input('data_inicio');
+        $evento->data_fim = $request->input('data_fim');
+        $evento->description = $request->input('description');
+        $evento->capacidade = $request->input('capacidade');
+        $evento->slug = Str::slug($request->input('title'));
+        if($request->file('image')){
+            $evento->banner = 'banner'.'_'.$evento->slug.'.'.$request->file('image')->extension();
+            $request->file('image')->move(public_path('/img'), $evento->banner);
+        }
+
+        $evento->update();
 
         return redirect()->route('eventos.index')
             ->with('success', 'Evento atualizado com sucesso!');

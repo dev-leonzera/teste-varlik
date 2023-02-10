@@ -17,17 +17,16 @@
                             Local do evento: {{ $evento->local }}
                         </div>
                         <div class="mb-3">
-                            Data do Evento: {{ \date("d/m/Y", strtotime($evento->data_evento)) }}
-                        </div>
-                        <div class="mb-3">
-                            <p>
-                                {{ $evento->description }}
-                            </p>
+                            @if ($evento->data_fim)
+                                Data do Evento: {{ \date("d/m/Y", strtotime($evento->data_inicio)) }} à {{ \date("d/m/Y", strtotime($evento->data_fim)) }}
+                            @else
+                                Data do Evento: {{ \date("d/m/Y", strtotime($evento->data_inicio)) }};
+                            @endif
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
-                            <a href="{{ url('/evento/'.$evento->slug) }}" target="_blank">Link para a página do evento</a>
+                            <a href="{{ url('/evento/'.$evento->slug) }}" target="_blank" class="btn btn-primary">Link para a página do evento</a>
                         </div>
                     </div>
                 </div>
@@ -39,6 +38,8 @@
                             <th>Email</th>
                             <th>Idade</th>
                             <th>Telefone</th>
+                            {{-- <th>Status Inscrição</th>
+                            <th>Ações</th> --}}
                         </thead>
                         <tbody>
                             @foreach ($inscritos as $inscrito)
@@ -53,8 +54,18 @@
                                     {{ $inscrito->idade }}
                                 </td>
                                 <td>
-                                    {{ $inscrito->telefone }}
+                                    @php
+                                        $mask = '(##) ####-####';
+                                    @endphp
+                                    {{ mask($mask, $inscrito->telefone) }}
                                 </td>
+                                {{-- <td>
+                                    Aprovada
+                                </td>
+                                <td>
+                                    <button>Aprovar</button>
+                                    <button>Negar</button>
+                                </td> --}}
                             </tr>
                             @endforeach
                         </tbody>

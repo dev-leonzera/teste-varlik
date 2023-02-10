@@ -12,6 +12,7 @@
 
 </head>
 <body class="theme-light">
+    @include('flash-message')
     <div class="page">
         <div class="sticky-top">
 			<header class="navbar navbar-expand-md navbar-light sticky-top d-print-none">
@@ -20,8 +21,8 @@
 						<span class="navbar-toggler-icon"></span>
 					</button>
 					<h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-						<a href=".">
-						<img src="{{ url('img/logo.svg') }}" width="110" height="32" alt="Tabler" class="navbar-brand-image">
+						<a href="{{ route('home') }}">
+                            {{ __('Laravents') }}
 						</a>
 					</h1>
 					<div class="navbar-nav flex-row order-md-last">

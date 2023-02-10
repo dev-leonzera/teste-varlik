@@ -16,7 +16,7 @@ use App\Http\Controllers\InscritoController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/evento/{slug}', [InscritoController::class, 'pageEvento'])->name('evento.page');

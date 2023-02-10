@@ -4,8 +4,60 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "79190a2cfec2904974fda93ec7faf3b1",
+    "content-hash": "98caf18fcf48ec56c9c72da0ccc79d97",
     "packages": [
+        {
+            "name": "alvarofpp/masks",
+            "version": "1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alvarofpp/laravel-masks.git",
+                "reference": "ed54949730f77695e6e56551bbf32e7794eef989"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alvarofpp/laravel-masks/zipball/ed54949730f77695e6e56551bbf32e7794eef989",
+                "reference": "ed54949730f77695e6e56551bbf32e7794eef989",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.0"
+            },
+            "require-dev": {
+                "laravel/laravel": ">=6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Alvarofpp\\Masks\\": "/src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Álvaro Ferreira Pires de Paiva",
+                    "email": "alvarofepipa@gmail.com"
+                }
+            ],
+            "description": "A package to mask your variables or model's attributes.",
+            "homepage": "https://github.com/alvarofpp/laravel-masks",
+            "keywords": [
+                "laravel",
+                "mask",
+                "model"
+            ],
+            "support": {
+                "issues": "https://github.com/alvarofpp/laravel-masks/issues",
+                "source": "https://github.com/alvarofpp/laravel-masks/tree/master"
+            },
+            "time": "2020-08-23T09:30:08+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.10.2",

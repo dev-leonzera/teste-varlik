@@ -17,8 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
-            $table->string('description');
-            $table->date('data_evento');
+            $table->longText('description');
+            $table->date('data_inicio');
+            $table->date('data_fim')->nullable($value = true);
             $table->string('local');
             $table->integer('capacidade');
             $table->string('banner');
